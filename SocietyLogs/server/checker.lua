@@ -81,8 +81,8 @@ if (GetCurrentResourceName == ResourceName)
         print('Als de resource naam niet gelijk is aan' .. ResourceName)
 end
 
-PerformHttpRequest('https://raw.githubusercontent.com/ThatGuyJop/Discord-Bots/main/AutoDealer/VOORFIVEM/.versie', function(Error, NewestVersion, Header)
-	PerformHttpRequest('https://raw.githubusercontent.com/ThatGuyJop/Discord-Bots/main/AutoDealer/VOORFIVEM/changes', function(Error, Changes, Header)
+PerformHttpRequest('https://raw.githubusercontent.com/ThatGuyJop/FiveM/main/SocietyLogs/Version.md', function(Error, NewestVersion, Header)
+	PerformHttpRequest('https://raw.githubusercontent.com/ThatGuyJop/FiveM/main/SocietyLogs/CHANGELOG.md', function(Error, Changes, Header)
 		print('\n')
 		print('##############')
 		print('## ' .. GetCurrentResourceName())

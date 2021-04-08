@@ -1,72 +1,87 @@
 --Event to actually send Messages to Discord
-RegisterServerEvent('DiscordBot:ToDiscord')
-AddEventHandler('DiscordBot:ToDiscord', function(WebHook, Message)
+RegisterServerEvent('SCLOG:Webhook')
+AddEventHandler('SCLOG:Webhook', function(WebHook, Auto, Categorie, Prijs)
 	if Message == nil or Message == '' then
 		return nil
 	end
-    
-    local Name = nil
+    -- local Categorie = nil
+    -- local Auto = nil
+    -- local Desc = nil
+    -- local Name = nil
  
 	if WebHook:lower() == 'inkoop' then
 		WebHook = Autodealer.InkoopWH
         Name = Inkoop Log
+        Desc = "Hierbij informatie over een recent `ingekochte auto`."
         Fields = {
-            { name: "Categorie", value: catg, inline: true },
-            { name: "Specifiek", value: "", inline: true },
+            { 
+                name: "**Informatie**", 
+                value: "**Prijs** : `".. Prijs .. "`\n**Wat** : `".. Categorie .."`\n**Voertuig** : `".. Auto .."`",
+                inline: false 
+            },
         }
 	elseif WebHook:lower() == 'verkoop' then
 		WebHook = Autodealer.VerkoopWH
         Name = Verkoop Log
+        Desc = "Hierbij informatie over een recent `verkochte auto`."
         Fields = {
-            { name: "", value: "", inline: true },
-            { name: "", value: "", inline: true },
-            { name: "", value: "", inline: true },
-            { name: "", value: "", inline: true },
+            { 
+                name: "**Informatie**", 
+                value: "**Prijs** : `".. Prijs .. "`\n**Wat** : `".. Categorie .."`\n**Voertuig** : `".. Auto .."`",
+                inline: false 
+            },
         }
-	elseif WebHook:lower() == 'geld' then
-		WebHook = Autodealer.GeldWH
-        Name = Geld Log
-        Fields = {
-            { name: "", value: "", inline: true },
-            { name: "", value: "", inline: true },
-            { name: "", value: "", inline: true },
-            { name: "", value: "", inline: true },
-        }
-    elseif WebHook:lower() == 'kluis' then
-		WebHook = Autodealer.KluisWH
-        Name = Kluis Log
-        Fields = {
-            { name: "", value: "", inline: true },
-            { name: "", value: "", inline: true },
-            { name: "", value: "", inline: true },
-            { name: "", value: "", inline: true },
-        }
+	-- elseif WebHook:lower() == 'geld' then
+	-- 	WebHook = Autodealer.GeldWH
+    --     Name = Geld Log
+    --     Desc = "Hierbij informatie over een recente activiteiten ivm `geld`."
+    --     Fields = {
+    --         { 
+    --             name: "**Informatie**", 
+    --             value: "**Prijs** : `".. Prijs .. "`\n**Wat** : `".. Categorie .."`\n**Voertuig** : `".. Auto .."`",
+    --             inline: false 
+    --         },
+    --     }
+    -- elseif WebHook:lower() == 'kluis' then
+	-- 	WebHook = Autodealer.KluisWH
+    --     Name = Kluis Log
+    --     Desc = "Hierbij informatie over een recente activiteiten met de `kluis`."
+    --     Fields = {
+    --         { 
+    --             name: "**Informatie**", 
+    --             value: "**Wat** : `".. item .. "`\n**Wat** : `".. Categorie .."`\n**Voertuig** : `".. Auto .."`",
+    --             inline: false 
+    --         },
+    --     }
     elseif WebHook:lower() == 'stock' then
 		WebHook = Autodealer.StockWH
         Name = Stock Log
+        Desc = "Hierbij informatie over een recente verandering in `stock`."
         Fields = {
-            { name: "", value: "", inline: true },
-            { name: "", value: "", inline: true },
-            { name: "", value: "", inline: true },
-            { name: "", value: "", inline: true },
+            { 
+                name: "**Informatie**", 
+                value: "**Wat** : `".. item .. "`\n**Wat** : `".. Categorie .."`\n**Voertuig** : `".. Auto .."`",
+                inline: false 
+            },
         }
 	elseif not WebHook:find('discordapp.com/api/webhooks') then
 		print('Please specify a webhook link!')
 		return nil
 	end
-    
+    local date = os.date('*t')
+    local timestamp = "%m %B %Y"
     local embed = {
         {
             ["color"] = Autodealer.Color,
             ["title"] = "**".. Name .."**",
-            ["description"] = Desc,
+            ["description"] = Desc .."\n\n**Steam** : `".. _steamURL.."`\n**Discord** : `".. _discordID .."`",
             ["fields"] = {
-                { name: "Identifiers", value: _steamURL.."\n".. _discordID, inline: true },
                 Fields
             }
             ["footer"] = {
                 ["text"] = "Society Logs Jop#5813",
             },
+            ["timestamp"] = timestamp,
 
         }
     }
