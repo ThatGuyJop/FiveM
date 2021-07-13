@@ -25,9 +25,9 @@ Autodealer.GeldWH = "DISCORD_WEBHOOK"-- Geld Webhook ID hier
 Autodealer.KluisWH = "DISCORD_WEBHOOK"-- Kluis Webhook ID hier
 Autodealer.StockWH = "DISCORD_WEBHOOK"-- Stock Webhook ID hier
 
-AutoDealer.steamID = true				-- set to false to disable Steam ID in the logs
-AutoDealer.steamURL = true				-- set to false to disable Steam URL in the logs
-AutoDealer.discordID = true				-- set to false to disable Discord ID in the logs
+Autodealer.steamID = true				-- set to false to disable Steam ID in the logs
+Autodealer.steamURL = true				-- set to false to disable Steam URL in the logs
+Autodealer.discordID = true				-- set to false to disable Discord ID in the logs
 Autodealer.username = "Bot Username Here" 							-- Bot Username
 Autodealer.avatar = "https://via.placeholder.com/30x30"				-- Bot Avatar
 Autodealer.communtiyName = "Community Name Here"					-- Icon top of the Embed
