@@ -32,7 +32,3 @@ Autodealer.username = "Bot Username Here" 							-- Bot Username
 Autodealer.avatar = "https://via.placeholder.com/30x30"				-- Bot Avatar
 Autodealer.communtiyName = "Community Name Here"					-- Icon top of the Embed
 Autodealer.communtiyLogo = "https://via.placeholder.com/30x30"	
-
-Autodealer.Items{
-    Contract = "contract",
-}
